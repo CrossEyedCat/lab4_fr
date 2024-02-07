@@ -40,13 +40,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveSongSinger(songSingerData) {
+    async saveSongSinger(songSingerData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_songs_singers", {
-        Songsid: songSingerData.Songsid,
-        Singersid: songSingerData.Singersid,
-        link_to_video: songSingerData.link_to_video,
-      });
+      return await axios.post(`http://localhost:10234/save_songs_singers/${songSingerData}`);
     },
   },
 };

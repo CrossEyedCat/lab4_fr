@@ -43,8 +43,8 @@ export default {
     };
   },
   methods: {
-    submitComment() {
-      axios.post('http://localhost:10234/save_comment', this.commentData)
+    async submitComment() {
+      await axios.post(`http://localhost:10234/save_comment/${this.commentData}`)
           .then(response => {
             console.log(response);
             alert('Комментарий сохранён!');

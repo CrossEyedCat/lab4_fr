@@ -40,13 +40,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveFolder(folderData) {
+    async saveFolder(folderData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_folders", {
-        id: folderData.id,
-        name: folderData.name,
-        Usersid: folderData.Usersid,
-      });
+      return await axios.post(`http://localhost:10234/save_folders/${folderData}`);
     },
   },
 };

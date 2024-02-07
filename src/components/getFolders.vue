@@ -26,8 +26,8 @@ export default {
   methods: {
     async getFolders() {
       try {
-        const response = await axios.get(
-            `http://localhost:10234/get_folders?name=${this.folderName}`
+        const response = await axios.post(
+            `http://localhost:10234/get_folders/${this.folderName}`
         );
         this.folders = response.data;
       } catch (error) {

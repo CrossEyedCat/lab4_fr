@@ -27,8 +27,8 @@ export default {
   methods: {
     async getTagSongs() {
       try {
-        const response = await axios.get(
-            `http://localhost:10234/get_tags_songs?tagId=${this.tagId}`
+        const response = await axios.post(
+            `http://localhost:10234/get_tags_songs/${this.tagId}`
         );
         this.songs = response.data;
       } catch (error) {

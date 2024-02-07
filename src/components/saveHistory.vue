@@ -35,12 +35,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveHistory(historyData) {
+    async saveHistory(historyData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_history", {
-        Usersid: historyData.Usersid,
-        Songsid: historyData.Songsid,
-      });
+      return await axios.post(`http://localhost:10234/save_history/${historyData}`);
     },
   },
 };

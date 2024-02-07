@@ -35,12 +35,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveTagSong(tagSongData) {
+    async saveTagSong(tagSongData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_tags_songs", {
-        Tagsid: tagSongData.Tagsid,
-        Songsid: tagSongData.Songsid,
-      });
+      return await axios.post(`http://localhost:10234/save_tags_songs/${tagSongData}`);
     },
   },
 };

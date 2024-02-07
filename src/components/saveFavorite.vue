@@ -35,12 +35,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveFavorite(favoriteData) {
+    async saveFavorite(favoriteData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_favorites", {
-        Usersid: favoriteData.Usersid,
-        Songsid: favoriteData.Songsid,
-      });
+      return await axios.post(`http://localhost:10234/save_favorites/${favoriteData}`);
     },
   },
 };

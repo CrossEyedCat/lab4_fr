@@ -35,12 +35,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveFolderSong(folderSongData) {
+    async saveFolderSong(folderSongData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_folders_songs", {
-        Foldersid: folderSongData.Foldersid,
-        Songsid: folderSongData.Songsid,
-      });
+      return await axios.post(`http://localhost:10234/save_folders_songs/${folderSongData}`);
     },
   },
 };

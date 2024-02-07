@@ -35,12 +35,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveTag(tagData) {
+    async saveTag(tagData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_tags", {
-        id: tagData.id,
-        name: tagData.name,
-      });
+      return await axios.post(`http://localhost:10234/save_tags/${tagData}`);
     },
   },
 };

@@ -26,8 +26,8 @@ export default {
   methods: {
     async getLevels() {
       try {
-        const response = await axios.get(
-            `http://localhost:10234/get_levels?name=${this.levelName}`
+        const response = await axios.post(
+            `http://localhost:10234/get_levels/${this.levelName}`
         );
         this.levels = response.data;
       } catch (error) {

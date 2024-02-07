@@ -26,23 +26,14 @@ export default {
   methods: {
     async getFavorites() {
       try {
-        const URL = "http://localhost:10234/get_favorites";
-        const data = {
-          userId: this.userId
-        };
-        const response = await fetch(URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data)
-        });
+        const URL = `http://localhost:10234/get_favorites/${this.userId}`;
+        const response = await axios.post(URL);
 
-        if (!response.ok) {
+        if (response.status !== 200) {
           throw new Error('Network response was not ok');
         }
 
-        this.favorites = await response.json();
+        this.favorites = response.data;
       } catch (error) {
         console.error("Ошибка при получении избранных элементов:", error);
       }

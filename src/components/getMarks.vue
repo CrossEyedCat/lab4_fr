@@ -26,8 +26,8 @@ export default {
   methods: {
     async getMarks() {
       try {
-        const response = await axios.get(
-            `http://localhost:10234/get_marks?songId=${this.songId}`
+        const response = await axios.post(
+            `http://localhost:10234/get_marks/${this.songId}`
         );
         this.marks = response.data;
       } catch (error) {

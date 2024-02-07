@@ -40,13 +40,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveMark(markData) {
+    async saveMark(markData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_marks", {
-        id: markData.id,
-        reaction: markData.reaction,
-        Songsid: markData.Songsid,
-      });
+      return await axios.post(`http://localhost:10234/save_marks/${markData}`);
     },
   },
 };

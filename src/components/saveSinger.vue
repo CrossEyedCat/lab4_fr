@@ -48,14 +48,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveSinger(singerData) {
+    async saveSinger(singerData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_singers", {
-        id: singerData.id,
-        name: singerData.name,
-        gender: singerData.gender,
-        text: singerData.text,
-      });
+      return await axios.post(`http://localhost:10234/save_singers/${singerData}`);
     },
   },
 };

@@ -26,8 +26,8 @@ export default {
   methods: {
     async getHistory() {
       try {
-        const response = await axios.get(
-            `http://localhost:10234/get_history?userId=${this.userId}`
+        const response = await axios.post(
+            `http://localhost:10234/get_history/${this.userId}`
         );
         this.history = response.data;
       } catch (error) {

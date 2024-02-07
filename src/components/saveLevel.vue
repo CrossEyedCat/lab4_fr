@@ -40,13 +40,9 @@ export default {
         console.error("Произошла ошибка при отправке запроса:", error);
       }
     },
-    saveLevel(levelData) {
+    async saveLevel(levelData) {
       // Ваш код для отправки запроса с использованием axios
-      return axios.post("http://localhost:10234/save_levels", {
-        id: levelData.id,
-        level_name: levelData.level_name,
-        info: levelData.info,
-      });
+      return await axios.post(`http://localhost:10234/save_levels/${levelData}`);
     },
   },
 };

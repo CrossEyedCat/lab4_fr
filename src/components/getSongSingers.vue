@@ -26,8 +26,8 @@ export default {
   methods: {
     async getSongSingers() {
       try {
-        const response = await axios.get(
-            `http://localhost:10234/get_songs_singers?songId=${this.songId}`
+        const response = await axios.post(
+            `http://localhost:10234/get_songs_singers/${this.songId}`
         );
         this.singers = response.data;
       } catch (error) {
