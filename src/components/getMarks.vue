@@ -6,10 +6,7 @@
     <button @click="getMarks">Получить оценки</button>
 
     <div v-if="marks.length > 0">
-      <h3>Информация об оценках:</h3>
-      <ul>
-        <li v-for="mark in marks" :key="mark.id">{{ mark.value }}</li>
-      </ul>
+      {{marks}}}
     </div>
   </div>
 </template>
@@ -26,10 +23,10 @@ export default {
   methods: {
     async getMarks() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_marks/${this.songId}`
         );
-        this.marks = response.data;
+        this.marks = response.data.mark;
       } catch (error) {
         console.error("Ошибка при получении оценок:", error);
       }

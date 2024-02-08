@@ -7,9 +7,7 @@
 
     <div v-if="tags.length > 0">
       <h3>Результаты поиска:</h3>
-      <ul>
-        <li v-for="tag in tags" :key="tag.id">{{ tag.name }}</li>
-      </ul>
+      {{tags}}}
     </div>
   </div>
 </template>
@@ -26,10 +24,10 @@ export default {
   methods: {
     async getTags() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_tags/${this.tagName}`
         );
-        this.tags = response.data;
+        this.tags = response.data.tags.length?response.data.tags:"Нет данных";
       } catch (error) {
         console.error("Ошибка при поиске тегов:", error);
       }

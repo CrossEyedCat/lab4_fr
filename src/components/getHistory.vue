@@ -7,9 +7,7 @@
 
     <div v-if="history.length > 0">
       <h3>История пользователя:</h3>
-      <ul>
-        <li v-for="item in history" :key="item.id">{{ item.event }}</li>
-      </ul>
+      {{history}}
     </div>
   </div>
 </template>
@@ -26,10 +24,10 @@ export default {
   methods: {
     async getHistory() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_history/${this.userId}`
         );
-        this.history = response.data;
+        this.history = response.data.history.length?response.data.history:"Нет данных";
       } catch (error) {
         console.error("Ошибка при получении истории:", error);
       }

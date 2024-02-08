@@ -7,9 +7,7 @@
 
     <div v-if="songs.length > 0">
       <h3>Песни с выбранным тегом:</h3>
-      <ul>
-        <li v-for="song in songs" :key="song.id">{{ song.name }}</li>
-      </ul>
+      {{songs}}
     </div>
   </div>
 </template>
@@ -27,10 +25,11 @@ export default {
   methods: {
     async getTagSongs() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_tags_songs/${this.tagId}`
         );
-        this.songs = response.data;
+        this.songs = response.data.tagsSongs.length?response.data.tagsSongs:"Нет данных";
+        console.log(this.songs)
       } catch (error) {
         console.error("Ошибка при получении песен с тегом:", error);
       }

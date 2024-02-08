@@ -7,9 +7,7 @@
 
     <div v-if="folders.length > 0">
       <h3>Результаты поиска:</h3>
-      <ul>
-        <li v-for="folder in folders" :key="folder.id">{{ folder.name }}</li>
-      </ul>
+      {{folders}}}
     </div>
   </div>
 </template>
@@ -26,10 +24,13 @@ export default {
   methods: {
     async getFolders() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_folders/${this.folderName}`
         );
-        this.folders = response.data;
+        this.folders = response.data.folders;
+        if (this.folders.length===0){
+          this.folders = "Нет данных"
+        }
       } catch (error) {
         console.error("Ошибка при поиске папок:", error);
       }

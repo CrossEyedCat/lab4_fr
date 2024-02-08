@@ -7,9 +7,7 @@
 
     <div v-if="singers.length > 0">
       <h3>Исполнители выбранной песни:</h3>
-      <ul>
-        <li v-for="singer in singers" :key="singer.id">{{ singer.name }}</li>
-      </ul>
+      {{singers}}
     </div>
   </div>
 </template>
@@ -26,10 +24,10 @@ export default {
   methods: {
     async getSongSingers() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_songs_singers/${this.songId}`
         );
-        this.singers = response.data;
+        this.singers = response.data.songsSingers?response.data.songsSingers:"Нет данных";
       } catch (error) {
         console.error("Ошибка при получении исполнителей песни:", error);
       }

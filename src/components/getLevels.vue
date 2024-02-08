@@ -6,10 +6,7 @@
     <button @click="getLevels">Поиск уровней</button>
 
     <div v-if="levels.length > 0">
-      <h3>Результаты поиска:</h3>
-      <ul>
-        <li v-for="level in levels" :key="level.id">{{ level.name }}</li>
-      </ul>
+      {{levels}}
     </div>
   </div>
 </template>
@@ -26,10 +23,10 @@ export default {
   methods: {
     async getLevels() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_levels/${this.levelName}`
         );
-        this.levels = response.data;
+        this.levels = response.data.length?response.data:"Нет данных";
       } catch (error) {
         console.error("Ошибка при поиске уровней:", error);
       }

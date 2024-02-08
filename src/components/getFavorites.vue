@@ -7,9 +7,7 @@
 
     <div v-if="favorites.length > 0">
       <h3>Избранные элементы пользователя:</h3>
-      <ul>
-        <li v-for="item in favorites" :key="item.id">{{ item.name }}</li>
-      </ul>
+      {{favorites}}
     </div>
   </div>
 </template>
@@ -32,8 +30,10 @@ export default {
         if (response.status !== 200) {
           throw new Error('Network response was not ok');
         }
+        console.log(response.data)
+        this.favorites = response.data.favorites;
+        console.log(this.favorites)
 
-        this.favorites = response.data;
       } catch (error) {
         console.error("Ошибка при получении избранных элементов:", error);
       }

@@ -7,9 +7,7 @@
 
     <div v-if="songs.length > 0">
       <h3>Песни из выбранной папки:</h3>
-      <ul>
-        <li v-for="song in songs" :key="song.id">{{ song.name }}</li>
-      </ul>
+      {{songs}}
     </div>
   </div>
 </template>
@@ -26,10 +24,12 @@ export default {
   methods: {
     async getFolderSongs() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_folders_songs/${this.folderId}`
         );
-        this.songs = response.data;
+        console.log(response.data)
+        this.songs = response.data.foldersSongs;
+        console.log(this.songs)
       } catch (error) {
         console.error("Ошибка при получении песен из папки:", error);
       }

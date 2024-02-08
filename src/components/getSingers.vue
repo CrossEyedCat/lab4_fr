@@ -7,9 +7,7 @@
 
     <div v-if="singers.length > 0">
       <h3>Результаты поиска:</h3>
-      <ul>
-        <li v-for="singer in singers" :key="singer.id">{{ singer.name }}</li>
-      </ul>
+      {{singers}}
     </div>
   </div>
 </template>
@@ -26,10 +24,10 @@ export default {
   methods: {
     async getSingers() {
       try {
-        const response = await axios.post(
+        const response = await axios.get(
             `http://localhost:10234/get_singers/${this.singerName}`
         );
-        this.singers = response.data;
+        this.singers = response.data.singers.length?response.data.singers:"Нет данных";
       } catch (error) {
         console.error("Ошибка при поиске певцов:", error);
       }
