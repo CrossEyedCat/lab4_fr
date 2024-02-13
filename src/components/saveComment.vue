@@ -44,15 +44,19 @@ export default {
   },
   methods: {
     async submitComment() {
-      await axios.post(`http://localhost:10234/save_comment/${this.commentData}`)
-          .then(response => {
-            console.log(response);
-            alert('Комментарий сохранён!');
-          })
-          .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Ошибка при сохранении комментария.');
-          });
+      const url = `http://localhost:10234/save_comment`; // URL, куда вы отправляете запрос
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
+
+      try {
+        const response = await axios.post(url, this.commentData, { headers });
+        console.log(response);
+        alert('Комментарий сохранён!');
+      } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Ошибка при сохранении комментария.');
+      }
     }
   }
 };
