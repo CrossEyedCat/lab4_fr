@@ -11,16 +11,16 @@
         <textarea id="text" v-model="commentData.text"></textarea>
       </div>
       <div>
-        <label for="data">Дата (YYYY-MM-DDTHH:mm:ssZ):</label>
-        <input type="date" id="data" v-model="commentData.data">
+        <label for="date">Дата (YYYY-MM-DDTHH:mm:ssZ):</label>
+        <input type="date" id="date" v-model="commentData.date">
       </div>
       <div>
         <label for="songsId">ID песни:</label>
-        <input type="number" id="songsId" v-model="commentData.Songsid">
+        <input type="number" id="songsId" v-model="commentData.songsId">
       </div>
       <div>
         <label for="usersId">ID пользователя:</label>
-        <input type="number" id="usersId" v-model="commentData.Usersid">
+        <input type="number" id="usersId" v-model="commentData.usersId">
       </div>
       <button type="submit">Отправить</button>
     </form>
@@ -36,9 +36,9 @@ export default {
       commentData: {
         id: '',
         text: '',
-        data: '',
-        Songsid: '',
-        Usersid: ''
+        date: '',
+        songsId: '',
+        usersId: ''
       }
     };
   },
