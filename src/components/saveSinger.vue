@@ -49,8 +49,11 @@ export default {
       }
     },
     async saveSinger(singerData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_singers/${singerData}`);
+      return await axios.post(`http://localhost:10234/save_singers`, singerData, {headers});
     },
   },
 };

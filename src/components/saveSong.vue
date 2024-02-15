@@ -8,7 +8,7 @@
       </div>
       <div>
         <label for="songGener">Жанр:</label>
-        <input type="text" id="songGener" v-model="songData.gener" />
+        <input type="text" id="songGener" v-model="songData.gender" />
       </div>
       <div>
         <label for="songName">Название песни:</label>
@@ -28,7 +28,7 @@
       </div>
       <div>
         <label for="songVisitors">Количество посетителей:</label>
-        <input type="text" id="songVisitors" v-model="songData.Visitors_count" />
+        <input type="text" id="songVisitors" v-model="songData.visitors_count" />
       </div>
       <div>
         <label for="songReleaseDate">Дата выпуска (YYYY-MM-DD):</label>
@@ -46,12 +46,12 @@ export default {
     return {
       songData: {
         id: "",
-        gener: "",
+        gender: "",
         name: "",
         musician: "",
         text: "",
         level_id: "",
-        Visitors_count: "",
+        visitors_count: "",
         release_date: "",
       },
     };
@@ -66,8 +66,11 @@ export default {
       }
     },
     async saveSong(songData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_songs/${songData}`);
+      return await axios.post(`http://localhost:10234/save_songs`, songData, {headers});
     },
   },
 };

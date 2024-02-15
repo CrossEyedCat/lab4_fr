@@ -41,8 +41,11 @@ export default {
       }
     },
     async saveLevel(levelData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_levels/${levelData}`);
+      return await axios.post(`http://localhost:10234/save_levels`, levelData, {headers});
     },
   },
 };

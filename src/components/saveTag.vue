@@ -36,8 +36,11 @@ export default {
       }
     },
     async saveTag(tagData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_tags/${tagData}`);
+      return await axios.post(`http://localhost:10234/save_tags`, tagData, {headers});
     },
   },
 };

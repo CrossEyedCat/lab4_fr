@@ -4,11 +4,11 @@
     <form @submit.prevent="submitForm">
       <div>
         <label for="folderId">ID папки:</label>
-        <input type="text" id="folderId" v-model="folderSongData.Foldersid" />
+        <input type="text" id="folderId" v-model="folderSongData.foldersId" />
       </div>
       <div>
         <label for="songId">ID песни:</label>
-        <input type="text" id="songId" v-model="folderSongData.Songsid" />
+        <input type="text" id="songId" v-model="folderSongData.songsId" />
       </div>
       <button type="submit">Отправить запрос</button>
     </form>
@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       folderSongData: {
-        Foldersid: "",
-        Songsid: "",
+        foldersId: "",
+        songsId: "",
       },
     };
   },
@@ -36,8 +36,11 @@ export default {
       }
     },
     async saveFolderSong(folderSongData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_folders_songs/${folderSongData}`);
+      return await axios.post(`http://localhost:10234/save_folders_songs`, folderSongData, {headers});
     },
   },
 };

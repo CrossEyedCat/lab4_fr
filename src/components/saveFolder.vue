@@ -12,7 +12,7 @@
       </div>
       <div>
         <label for="userId">ID пользователя:</label>
-        <input type="text" id="userId" v-model="folderData.Usersid" />
+        <input type="text" id="userId" v-model="folderData.usersId" />
       </div>
       <button type="submit">Отправить запрос</button>
     </form>
@@ -27,7 +27,7 @@ export default {
       folderData: {
         id: "",
         name: "",
-        Usersid: "",
+        usersId: "",
       },
     };
   },
@@ -41,8 +41,11 @@ export default {
       }
     },
     async saveFolder(folderData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_folders/${folderData}`);
+      return await axios.post(`http://localhost:10234/save_folders`, folderData, {headers});
     },
   },
 };

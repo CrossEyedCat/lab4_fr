@@ -4,7 +4,7 @@
     <form @submit.prevent="submitForm">
       <div>
         <label for="songId">ID песни:</label>
-        <input type="text" id="songId" v-model="songSingerData.Songsid" />
+        <input type="text" id="songId" v-model="songSingerData.songsId" />
       </div>
       <div>
         <label for="singerId">ID певца:</label>
@@ -25,8 +25,8 @@ export default {
   data() {
     return {
       songSingerData: {
-        Songsid: "",
-        Singersid: "",
+        songsId: "",
+        singersId: "",
         link_to_video: "",
       },
     };
@@ -41,8 +41,11 @@ export default {
       }
     },
     async saveSongSinger(songSingerData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_songs_singers/${songSingerData}`);
+      return await axios.post(`http://localhost:10234/save_songs_singers`, songSingerData, {headers});
     },
   },
 };

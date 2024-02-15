@@ -4,11 +4,11 @@
     <form @submit.prevent="submitForm">
       <div>
         <label for="tagId">ID тега:</label>
-        <input type="text" id="tagId" v-model="tagSongData.Tagsid" />
+        <input type="text" id="tagId" v-model="tagSongData.tagsId" />
       </div>
       <div>
         <label for="songId">ID песни:</label>
-        <input type="text" id="songId" v-model="tagSongData.Songsid" />
+        <input type="text" id="songId" v-model="tagSongData.songsId" />
       </div>
       <button type="submit">Отправить запрос</button>
     </form>
@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       tagSongData: {
-        Tagsid: "",
-        Songsid: "",
+        tagsId: "",
+        songsId: "",
       },
     };
   },
@@ -36,8 +36,11 @@ export default {
       }
     },
     async saveTagSong(tagSongData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_tags_songs/${tagSongData}`);
+      return await axios.post(`http://localhost:10234/save_tags_songs`, tagSongData, {headers});
     },
   },
 };

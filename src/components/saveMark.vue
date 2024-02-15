@@ -12,7 +12,7 @@
       </div>
       <div>
         <label for="songId">ID песни:</label>
-        <input type="text" id="songId" v-model="markData.Songsid" />
+        <input type="text" id="songId" v-model="markData.songsId" />
       </div>
       <button type="submit">Отправить запрос</button>
     </form>
@@ -27,7 +27,7 @@ export default {
       markData: {
         id: "",
         reaction: "",
-        Songsid: "",
+        songsId: "",
       },
     };
   },
@@ -41,8 +41,11 @@ export default {
       }
     },
     async saveMark(markData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_marks/${markData}`);
+      return await axios.post(`http://localhost:10234/save_marks`, markData, {headers});
     },
   },
 };

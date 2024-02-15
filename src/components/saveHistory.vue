@@ -4,11 +4,11 @@
     <form @submit.prevent="submitForm">
       <div>
         <label for="userId">ID пользователя:</label>
-        <input type="text" id="userId" v-model="historyData.Usersid" />
+        <input type="text" id="userId" v-model="historyData.usersId" />
       </div>
       <div>
         <label for="songId">ID песни:</label>
-        <input type="text" id="songId" v-model="historyData.Songsid" />
+        <input type="text" id="songId" v-model="historyData.songsId" />
       </div>
       <button type="submit">Отправить запрос</button>
     </form>
@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       historyData: {
-        Usersid: "",
-        Songsid: "",
+        usersId: "",
+        songsId: "",
       },
     };
   },
@@ -36,8 +36,11 @@ export default {
       }
     },
     async saveHistory(historyData) {
+      const headers = {
+        'Content-Type': 'application/json', // Указываем, что отправляем JSON
+      };
       // Ваш код для отправки запроса с использованием axios
-      return await axios.post(`http://localhost:10234/save_history/${historyData}`);
+      return await axios.post(`http://localhost:10234/save_history`, historyData, {headers});
     },
   },
 };
