@@ -8,7 +8,7 @@
       </div>
       <div>
         <label for="songGener">Жанр:</label>
-        <input type="text" id="songGener" v-model="songData.gender" />
+        <input type="text" id="songGener" v-model="songData.gener" />
       </div>
       <div>
         <label for="songName">Название песни:</label>
@@ -46,7 +46,7 @@ export default {
     return {
       songData: {
         id: "",
-        gender: "",
+        gener: "",
         name: "",
         musician: "",
         text: "",

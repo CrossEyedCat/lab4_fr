@@ -8,7 +8,7 @@
       </div>
       <div>
         <label for="singerId">ID певца:</label>
-        <input type="text" id="singerId" v-model="songSingerData.Singersid" />
+        <input type="text" id="singerId" v-model="songSingerData.singersId" />
       </div>
       <div>
         <label for="videoLink">Ссылка на видео:</label>
