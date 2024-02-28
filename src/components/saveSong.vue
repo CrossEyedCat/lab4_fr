@@ -30,10 +30,6 @@
         <label for="songVisitors">Количество посетителей:</label>
         <input type="text" id="songVisitors" v-model="songData.visitors_count" />
       </div>
-      <div>
-        <label for="songReleaseDate">Дата выпуска (YYYY-MM-DD):</label>
-        <input type="date" id="songReleaseDate" v-model="songData.release_date" />
-      </div>
       <button type="submit">Отправить запрос</button>
     </form>
   </div>
